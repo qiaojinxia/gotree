@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package protomsg;
+
+message RpcMessage{
+    string ID = 1;
+    string Method = 2;
+    string NodeID = 3;
+    repeated Param Params =4;
+    int64 Timeout = 5;
+    string Result = 6;
+    string Error = 7;
+
+}
+
+message Param {
+    string Key =  1;
+    string Value = 2;
+}
+
+
+message RpcMessageReq {
+    RpcMessage Msg = 1;
+}
+
+message RpcMessageRsp {
+    RpcMessage Msg = 1;
+}
+
+message RpcRequestMsg{
+    enum Msgtypes {
+        AddMony = 0;
+    }
+    Msgtypes Msgtype = 1;
+    string Data = 2;
+}
+
+message RpcResponseMsg{
+    string Msgtype = 1;
+    string Data = 2;
+    string Error = 3;
+}
+
+
+
+
+
+
+enum MsgBodyTag {
+    AddMony = 0;
+    AddMonyRsp = 1;
+}
+
+
+//加钱的消息
+message AddMonyBody {
+    int32 Amount = 1;
+}
+
+
+//加钱的消息
+message AddMonyBodyRsp {
+    int32 Amount = 1;
+    string RespMsg = 2;
+}

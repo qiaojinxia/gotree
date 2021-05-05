@@ -1,0 +1,7 @@
+syntax = "proto3";
+import "rpccode/protomsg/msg.proto";
+package protofunc;
+service ClientMsg {
+ // rpc PushMsg (protomsg.RpcMessageReq) returns (protomsg.RpcMessageRsp) {}
+  rpc PushMsgStream (stream protomsg.RpcRequestMsg) returns (stream protomsg.RpcResponseMsg) {}
+}
