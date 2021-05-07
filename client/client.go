@@ -48,8 +48,10 @@ func main() {
 	}()
 
 	go func() {
-		msgBody := &msg.AddMonyBody{
-			Amount: 10,
+		msgBody := &msg.RegisterBodyReq{
+			UserName: "caoMaoBoy",
+			PassWd:   "qiao123",
+			NickName: "test1",
 		}
 		data, err := proto.Marshal(msgBody)
 		if err != nil {
@@ -57,7 +59,7 @@ func main() {
 		}
 		for i := 0; i < 2; i++ {
 			r.Send(&msg.RpcRequestMsg{
-				Msgtype: msg.RpcRequestMsg_AddMony,
+				Msgtype: msg.MsgBodyTag_RegisterReq,
 				Data:    string(data),
 			})
 			time.Sleep(time.Second)

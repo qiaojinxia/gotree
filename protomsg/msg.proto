@@ -28,10 +28,7 @@ message RpcMessageRsp {
 }
 
 message RpcRequestMsg{
-    enum Msgtypes {
-        AddMony = 0;
-    }
-    Msgtypes Msgtype = 1;
+    MsgBodyTag Msgtype = 1;
     string Data = 2;
 }
 
@@ -49,6 +46,7 @@ message RpcResponseMsg{
 enum MsgBodyTag {
     AddMony = 0;
     AddMonyRsp = 1;
+    RegisterReq = 2;
 }
 
 
@@ -62,4 +60,17 @@ message AddMonyBody {
 message AddMonyBodyRsp {
     int32 Amount = 1;
     string RespMsg = 2;
+}
+
+message RegisterBodyReq {
+    string UserName = 1;
+    string PassWd = 2;
+    string NickName = 3;
+}
+
+message RegisterBodyRsp {
+    string ID = 1;
+    string UserName = 2;
+    string NickName = 3;
+
 }
